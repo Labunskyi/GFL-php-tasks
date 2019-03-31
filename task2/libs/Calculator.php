@@ -71,21 +71,17 @@ class Calculator
 		}
     }
 	
-	public function divide_numOne_on_valOne() {
+	public function divide_numOneOnValOne() {
         return 1 / $this->getValOne();
     }
 	
-	public function valOne_on_precent() {
+	public function valOneOnPrecent() {
         return $this->getValOne() * 0.01;
     }
 	
 	public function root(){
         return sqrt($this->getValOne());
     }
-	
-	/* public function getValMemory(){
-        return sqrt($this->getValOne());
-    } */
 }
 
 ?>
