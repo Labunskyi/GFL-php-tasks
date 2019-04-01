@@ -71,7 +71,7 @@ class Calculator
 		}
     }
 	
-	public function divide_numOneOnValOne() {
+	public function divideNumOneOnValOne() {
         return 1 / $this->getValOne();
     }
 	
