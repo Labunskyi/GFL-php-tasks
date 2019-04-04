@@ -22,7 +22,7 @@ class PdoDb extends SqlDb
 		
 	public function select() {
 	
-	$this->query = parent::getSelect();
+	$this->query = $this->getSelect();
 	print_r($this->query);
 	return $this;
 	}	
