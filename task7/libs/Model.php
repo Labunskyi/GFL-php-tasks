@@ -79,7 +79,7 @@ class Model
 	}
 	public function sendEmail()
 	{
-		$to = "labunskyi6@gmail.com"; 
+		$to = "example@example.com"; 
 		$name = $_POST['name'];
 		$email = $_POST['email'];
 		$message = $_POST['message'];
