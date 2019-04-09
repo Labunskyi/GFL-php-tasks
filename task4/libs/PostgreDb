@@ -10,7 +10,7 @@ class PostgreDb extends SqlDb
 	
 	public function connect() {
 		$data = array ();
-		$result = $this->connection->pg_query($this->sql);
+		$result = pg_query($this->query);
 			while ($row = pg_fetch_row($result)) {
 				$data[] = $row;
 			} 
