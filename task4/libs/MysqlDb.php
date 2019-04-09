@@ -12,7 +12,7 @@ class MysqlDb extends SqlDb
 	
 	public function connect() {
 		$data = array();
-		$result = $this->connection->mysql_query($this->sql);
+		$result = mysql_query($this->query);
 			while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
 				$data[] = $row;
 			} 
