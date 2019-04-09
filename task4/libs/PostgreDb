@@ -1,0 +1,20 @@
+<?php
+class PostgreDb extends SqlDb 
+{
+    protected $connection;
+	
+	
+	public function __construct($host, $user, $password, $db_name) {
+			$this->connection = pg_connect ("host=localhost port=5432 dbname=books password=''");
+	}
+	
+	public function connect() {
+		$data = array ();
+		$result = $this->connection->pg_query($this->sql);
+			while ($row = pg_fetch_row($result)) {
+				$data[] = $row;
+			} 
+		return $data;
+	
+	}	
+}	
