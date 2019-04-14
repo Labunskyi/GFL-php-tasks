@@ -7,45 +7,74 @@ include 'libs/Musician.php';
 include 'libs/Instrument.php';
 
 
-$band = new Band();
-$instrument->setName('guitar');
-$instrument->setCategory('string');
+$guitar = new Instrument();
+$guitar->setName('guitar');
+$guitar->setCategory('guitar');
 
-$musician = new Musician();
-$cookie->saveData('cookie', 4);
+$drum = new Instrument();
+$drum->setName('drum');
+$drum->setCategory('drum');
 
-$instrument = new Instrument();
-
-$instrument->setName('guitar');
-$instrument->setCategory('string');
-$instrument->setName('drum');
-$instrument->setCategory('pulsatile');
-$instrument->setName('synthesizer');
-$instrument->setCategory('keyed');
+$synthesizer = new Instrument();
+$synthesizer->setName('synthesizer');
+$synthesizer->setCategory('synthesizer');
 
 
+$vova = new Musician();
+$vova->addInstrument($guitar);
+$vova->getInstrument();
+$vova->setMusicianType('Vova guitarist');
+$vova->getMusicianType();
 
-function saveData(iWorkData $obj){
-    $obj->saveData($key, $val);
+$petya = new Musician();
+$petya->addInstrument($drum);
+$petya->getInstrument();
+$petya->setMusicianType('Petya drummer');
+$petya->getMusicianType();
+
+$misha = new Musician();
+$misha->addInstrument($synthesizer);
+$misha->getInstrument();
+$misha->setMusicianType('Misha keybord player');
+$misha->getMusicianType();
+
+$scorpions = new Band();
+$scorpions->setName('scorpions');
+$scorpions->setGenre('rock');
+$scorpions->addMusician($vova);
+$scorpions->addMusician($petya);
+$scorpions->getMusician();
+
+$allScorpions = $scorpions->getMusician();
+
+$scorpionsName = $scorpions->getName();
+$scorpionsGenre = $scorpions->getGenre();
+$scorpionsMusicians = '';
+
+foreach($allScorpions as $value) 
+{	
+	$scorpionsMusicians .= $value->getMusicianType() . " on " . $value->getInstrument()->getName() . "<br/>";
+
 }
 
-function getData(iWorkData $obj){
-    $obj->getData($key);
+
+$mband = new Band();
+$mband->setName('mband');
+$mband->setGenre('pop');
+$mband->addMusician($misha);
+$mband->getMusician();
+
+$allMband = $mband->getMusician();
+
+$mbandName = $mband->getName();
+$mbandGenre = $mband->getGenre();
+$mbandMusicians = '';
+
+foreach($allMband as $value) 
+{	
+	$mbandMusicians .= $value->getMusicianType() . " on " . $value->getInstrument()->getName() . "<br/>";
+	
 }
 
-function deleteData(iWorkData $obj){
-    $obj->deleteData($key);
-}
-
-saveData($session);
-getData($session);
-deleteData($session);
-
-saveData($cookie);
-getData($cookie);
-deleteData($cookie);
-
-
-
-//include 'templates/index.php';
+include 'templates/index.php';
 ?>
