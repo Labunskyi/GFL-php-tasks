@@ -1,18 +1,16 @@
 <?php
 class CookieClass implements iWorkData
 {
-    private $vars = array();
-  
     public function saveData($key, $val)
     {
-        setcookie("TestCookie", $val, time()+36);
+        setcookie($key, $val, time() +36);
         $_COOKIE[$key] = $val;
-        print_r($_COOKIE);
     }
 
     public function getData($key)
     {
         if(isset($_COOKIE[$key])){
+			setcookie($key, "", time() -36);
             return $_COOKIE[$key];
         }
 		return null;
@@ -25,4 +23,3 @@ class CookieClass implements iWorkData
         }
     }
 }
-?>
