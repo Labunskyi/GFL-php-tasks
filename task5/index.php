@@ -1,4 +1,5 @@
 <?php
+include 'config.php';
 include 'libs/iWorkData.php';
 include 'libs/SessionClass.php';
 include 'libs/CookieClass.php';
@@ -6,27 +7,48 @@ include 'libs/IniClass.php';
 include 'libs/JsonClass.php';
 include 'libs/SqlClass.php';
 
-
-$session = new SessionClass();
-$session->saveData('session', 4);
-$cookie = new CookieClass();
-$cookie->saveData('cookie', 4);
-//$ini = new IniClass();
-//$json = new JsonClass();
-//$sql = new SqlClass();
-
-
 function saveData(iWorkData $obj){
-    $obj->saveData($key, $val);
+	if (isset($key, $val)) {
+		$obj->saveData($key, $val);
+	}
 }
 
 function getData(iWorkData $obj){
-    $obj->getData($key);
+	if (isset($key)) {
+		$obj->getData($key);
+	}
 }
 
 function deleteData(iWorkData $obj){
-    $obj->deleteData($key);
+	if (isset($key)) {
+		$obj->deleteData($key);
+	}
 }
+
+$session = new SessionClass();
+$session->saveData('session', 4);
+$printGetSession = $session->getData('session');
+$printDelSession = $session->deleteData('session');
+
+$cookie = new CookieClass();
+$cookie->saveData('cookie', 4);
+$printGetCookie = $cookie->getData('cookie');
+$printDelCookie = $cookie->deleteData('cookie');
+
+$sql = new SqlClass();
+$sql->saveData('id_category', '106');
+$printGetSql = $sql->getData('id_category');
+$printDelSql = $sql->deleteData('cookie');
+
+$ini = new IniClass();
+$ini->saveData('ini', 4);
+$printGetIni = $ini->getData('ini');
+$printDelIni = $ini->deleteData('ini');
+
+$json = new JsonClass();
+$json->saveData('json', '4');
+$printGetJson = $json->getData('json');
+$printDelJson = $json->deleteData('json');
 
 saveData($session);
 getData($session);
@@ -36,7 +58,17 @@ saveData($cookie);
 getData($cookie);
 deleteData($cookie);
 
+saveData($sql);
+getData($sql);
+deleteData($sql);
 
+saveData($ini);
+getData($ini);
+deleteData($ini);
 
-//include 'templates/index.php';
+saveData($json);
+getData($json);
+deleteData($json);
+
+include 'templates/index.php';
 ?>
