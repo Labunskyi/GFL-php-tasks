@@ -3,9 +3,9 @@
 class Model
 { 
 	protected $arr = array('%TITLE%'=>'Contact Form', 
-	'%ERROR_NAME%'=>'', '%ERROR_EMAIL%'=>'', '%ERROR_SUBJECT%'=>'',
+	'%ERROR_NAME%'=>'', '%ERROR_EMAIL%'=>'', '%WRONG_EMAIL%'=>'', '%ERROR_SUBJECT%'=>'',
 	'%ERROR_MESSAGE%'=>'', '%NAME%'=>'', '%EMAIL%'=>'', '%SUBJECT%'=>'', '%MESSAGE%'=>'',
-	'%SELECTED_OPTION1%' => '', '%SELECTED_OPTION2%' => '', '%SELECTED_OPTION2%' => '',);
+	'%SELECTED_OPTION1%' => '', '%SELECTED_OPTION2%' => '', '%SELECTED_OPTION3%' => '');
 	
 	public function __construct()
    {
@@ -20,7 +20,7 @@ class Model
 	public function checkForm()
 	{	
 		$valid = true;
-			
+			if ($_POST['submit']) {
 			$name = trim($_POST['name']);
 			if (strlen($name) != 0) { 
 				$this->arr['%ERROR_NAME%'] = '';
@@ -35,8 +35,17 @@ class Model
 			if (strlen($email) != 0) { 
 				$this->arr['%ERROR_EMAIL%'] = '';	
 				$this->arr['%EMAIL%'] = $email;
+				
+				if (filter_var($email, FILTER_VALIDATE_EMAIL)) { 
+					$this->arr['%WRONG_EMAIL%'] = '';	
+					$this->arr['%EMAIL%'] = $email;
 				} else {
-					$this->arr['%ERROR_EMAIL%'] = 'Empty field';
+					$this->arr['%WRONG_EMAIL%'] = 'Wrong Email';
+					$this->arr['%EMAIL%'] = $email;
+					$valid = false;
+				}
+			} else {
+					$this->arr['%ERROR_EMAIL%'] = 'Empty Field';
 					$this->arr['%EMAIL%'] = '';
 					$valid = false;
 			}
@@ -73,13 +82,13 @@ class Model
 					$this->arr['%ERROR_MESSAGE%'] = 'Empty field';
 					$this->arr['%MESSAGE%'] = '';
 					$valid = false;
+				}
 			}
-
 		return $valid;
 	}
 	public function sendEmail()
 	{
-		$to = "example@example.com"; 
+		$to = "labunskyi6@gmail.com"; 
 		$name = $_POST['name'];
 		$email = $_POST['email'];
 		$message = $_POST['message'];
