@@ -27,28 +27,28 @@ function deleteData(iWorkData $obj){
 
 $session = new SessionClass();
 $session->saveData('session', 4);
-$printGetSession = $session->getData('session');
-$printDelSession = $session->deleteData('session');
+$printGetSession = print_r($session->getData('session'));
+$printDelSession = print_r($session->deleteData('session'));
 
 $cookie = new CookieClass();
 $cookie->saveData('cookie', 4);
-$printGetCookie = $cookie->getData('cookie');
-$printDelCookie = $cookie->deleteData('cookie');
+$printGetCookie = print_r($cookie->getData('cookie'));
+$printDelCookie = print_r($cookie->deleteData('cookie'));
 
 $sql = new SqlClass();
 $sql->saveData('id_category', '106');
-$printGetSql = $sql->getData('id_category');
-$printDelSql = $sql->deleteData('cookie');
+$printGetSql = print_r($sql->getData('id_category'));
+$printDelSql = print_r($sql->deleteData('id_category'));
 
 $ini = new IniClass();
-$ini->saveData('ini', 4);
-$printGetIni = $ini->getData('ini');
-$printDelIni = $ini->deleteData('ini');
+$ini->saveData('init', 4);
+$printGetIni = print_r($ini->getData('init'));
+$printDelIni = print_r($ini->deleteData('init'));
 
 $json = new JsonClass();
 $json->saveData('json', '4');
-$printGetJson = $json->getData('json');
-$printDelJson = $json->deleteData('json');
+$printGetJson = print_r($json->getData('json'));
+$printDelJson = print_r($json->deleteData('json'));
 
 saveData($session);
 getData($session);
