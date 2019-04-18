@@ -4,25 +4,25 @@
 </header>
 <body>
 <?php
-print_r($printGetSession);
+$printGetSession;
 echo "<br/>";
-print_r($printDelSession);
+$printDelSession;
 echo "<br/>";
-print_r($printGetCookie);
+$printGetCookie;
 echo "<br/>";
-print_r($printDelCookie);
+$printDelCookie;
 echo "<br/>";
-print_r($printGetSql);
+$printGetSql;
 echo "<br/>";
-print_r($printDelSql);
+$printDelSql;
 echo "<br/>";
-print_r($printGetIni);
+$printGetIni;
 echo "<br/>";
-print_r($printDelIni);
+$printDelIni;
 echo "<br/>";
-print_r($printGetJson);
+$printGetJson;
 echo "<br/>";
-print_r($printDelJson);
+$printDelJson;
 ?>
 </body>
 </html>
