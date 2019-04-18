@@ -52,20 +52,14 @@ class Model
 				
 					if ($subject == 1) {
 					$this->arr['%SELECTED_OPTION1%'] = 'selected';
-					} elseif ($subject == 2)  {
-					$this->arr['%SELECTED_OPTION1%'] = '';
+					} elseif ($subject == 2) {
 					$this->arr['%SELECTED_OPTION2%'] = 'selected';
 					} elseif ($subject == 3) {
-					$this->arr['%SELECTED_OPTION1%'] = '';
-					$this->arr['%SELECTED_OPTION2%'] = '';
 					$this->arr['%SELECTED_OPTION3%'] = 'selected';
 					}
 				
 				} else {
 					$this->arr['%ERROR_SUBJECT%'] = 'Empty field';
-					$this->arr['%SELECTED_OPTION1%'] = '';
-					$this->arr['%SELECTED_OPTION2%'] = '';
-					$this->arr['%SELECTED_OPTION3%'] = '';
 					$valid = false;
 				}
 			
