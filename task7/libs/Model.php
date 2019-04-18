@@ -7,11 +7,6 @@ class Model
 	'%ERROR_MESSAGE%'=>'', '%NAME%'=>'', '%EMAIL%'=>'', '%SUBJECT%'=>'', '%MESSAGE%'=>'',
 	'%SELECTED_OPTION1%' => '', '%SELECTED_OPTION2%' => '', '%SELECTED_OPTION3%' => '');
 	
-	public function __construct()
-   {
-	 
-   }
-   	
 	public function getArray()
    {	    
 		return $this->arr;	
