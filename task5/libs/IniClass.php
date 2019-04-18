@@ -7,14 +7,14 @@ class IniClass implements iWorkData
   
     public function saveData($key, $val)
     {	
+		$this->parse = parse_ini_file(INI_PATH);
 		$this->saveData[$key] = $val;
-		
+		$this->merge = array_merge($this->parse, $this->saveData);
 		$str = '';
-		foreach ($this->saveData as $key => $value) {
-			$str = $key . '=' . $value;
-		}
-		file_put_contents(INI_PATH, PHP_EOL, FILE_APPEND);
-		file_put_contents(INI_PATH, $str, FILE_APPEND);
+				foreach ($this->merge as $key => $value) {
+				$str .= $key . '=' . $value . PHP_EOL;
+			}
+		file_put_contents(INI_PATH, $str);
     }
 
     public function getData($key)
