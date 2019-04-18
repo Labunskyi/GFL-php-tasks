@@ -2,65 +2,78 @@
 class Helper
 {
 	
-    public function list($teg, $li, $arr)
+    public function listing($teg, $arr)
 	{	
 		$arr2 = '';
 		foreach($arr as $val) {
-			$arr2 .= '<' . $li . '>' . $val . '</' . $li . '>';
+			$arr2 .= '<li>' . $val . '</li>';
 		}
 		$list = '<' . $teg . '>' . $arr2 . '</' . $teg . '>';
 		return $list;
 	}
 	
-	public function termin($teg, $dt, $dd, $arr)
+	public function termin($arr)
 	{	
 		$arr2 = '';
 		foreach($arr as $key => $val) {
-			$arr2 .= '<' . $dt . '>' . $key . '</' . $dt . '>' . '<' . $dd . '>' . $val . '</' . $dd . '>';
+			$arr2 .= '<dt>' . $key . '</dt>' . '<dd>' . $val . '</dd>';
 		}
-		$list = '<' . $teg . '>' . $arr2 . '<' . $teg . '>';
+		$list = '<dl>' . $arr2 . '</dl>';
 		return $list;
 	}
 	
-	public function select($teg, $option, $arr)
+	public function select($arr)
 	{
 		$arr2 = '';
 		foreach($arr as $val) {
-			$arr2 .= '<' . $option . '>' . $val . '</' . $option . '>';
+			$arr2 .= '<option>' . $val . '</option>';
 		}
-		$list = '<' . $teg . ' multiple>' . $arr2 . '</' . $teg . '>';
+		$list = '<select multiple>' . $arr2 . '</select>';
 		return $list;
 	}
 	
-	public function radio($teg, $input, $arr)
+	public function radio($arr)
 	{
 		$arr2 = '';
 		foreach($arr as $val) {
-			$arr2 .= '<' . $input . ' type="radio" name="group1">' . $val . '<br>';
+			$arr2 .= '<input type="radio" name="group1">' . $val . '<br>';
 		}
-		$list = '<' . $teg . '>' . $arr2 . '</' . $teg . '>';
+		$list = '<form>' . $arr2 . '</form>';
 		return $list;
 	}
 	
-	public function check($teg, $input, $arr)
+	public function check($arr)
 	{
 		$arr2 = '';
 		foreach($arr as $val) {
-			$arr2 .= '<' . $input . ' type="checkbox">' . $val . '<br>';
+			$arr2 .= '<input type="checkbox">' . $val . '<br>';
 		}
-		$list = '<' . $teg . '>' . $arr2 . '</' . $teg . '>';
+		$list = '<form>' . $arr2 . '</form>';
 		return $list;
 	}
 	
-	public function table($teg, $input, $arr)
+	public function table($arr, $countColomns)
 	{
-		$arr2 = '';
-		foreach($arr as $val) {
-			$arr2 .= '<' . $input . ' type="checkbox">' . $val . '<br>';
+	$arr2 = array();
+	foreach ($arr as $key => $value) {
+		$arr2[] = '<td>' . $value . '</td>';
+	}
+
+	$blocks = array_chunk($arr2, $countColomns);
+	$strr = '';
+	foreach ($blocks as $block) {
+		$start = '<tr>';
+		$middl = '';
+		foreach ($block as $kicks) {
+			$middl .= $kicks;
 		}
-		$list = '<' . $teg . '>' . $arr2 . '</' . $teg . '>';
+		$end = '</tr>';
+	
+		$strr .= $start . $middl . $end;
+		//echo $strr;
+	}
+		$list = '<table border="1">' . $strr . '</table>';
 		return $list;
 	}
 	
 }
-
