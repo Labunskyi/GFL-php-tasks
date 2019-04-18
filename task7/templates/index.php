@@ -21,7 +21,8 @@
 	</div>
 	<div class="form-group">
 	<div style="color: #FF0000; font-size: 15px;"><strong>%ERROR_EMAIL%</strong></div>
-    <input type="email" class="form-control" name="email" id="email" value="%EMAIL%" placeholder="Your Email"/>
+	<div style="color: #FF0000; font-size: 15px;"><strong>%WRONG_EMAIL%</strong></div>
+    <input class="form-control" name="email" id="email" value="%EMAIL%" placeholder="Your Email"/>
     </div>
 	<div class="form-group">
 	<div style="color: #FF0000; font-size: 15px;"><strong>%ERROR_SUBJECT%</strong></div>
