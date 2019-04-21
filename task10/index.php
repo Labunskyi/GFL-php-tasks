@@ -12,7 +12,7 @@ $sql->insert()->into('category')->setField('id_category')->setField('name_catego
 
 $sql->delete()->from('category')->where('id_category = 10')->execute();
 
-$sql->update()->table('category')->set('name_category = vovan')->where('id_category = 11')->execute();
+$sql->update()->table('category')->set('name_category = vova')->where('id_category = 11')->execute();
 
 include 'templates/index.php';
 
