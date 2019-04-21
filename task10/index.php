@@ -1,10 +1,19 @@
 <?php
+
 include 'config.php';
-include 'libs/SqlDb.php';
-include 'libs/PdoDb.php';
+include 'libs/Sql.php';
 
-$PdoDb = new PdoDb(USER, DB_NAME);
 
-print_r($PdoDb->select()->setField('name')->setField('pwd')->from()->setTable('user')->connect());
+$sql = new Sql(USER, PASSWORD);
+
+$sql->select()->setField('user.name')->setField('pc.name')->from('user')->rightJoin()->table('pc')->on('pc.name = user.name')->execute();
+
+$sql->insert()->into('category')->setField('id_category')->setField('name_category')->setValue('16')->setValue('sem')->execute();
+
+$sql->delete()->from('category')->where('id_category = 10')->execute();
+
+$sql->update()->table('category')->set('name_category = vovan')->where('id_category = 11')->execute();
+
+include 'templates/index.php';
 
 ?>
