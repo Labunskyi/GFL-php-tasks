@@ -28,7 +28,17 @@ class SqlClass implements iWorkData
 		$this->field = $key;
 		$this->query = "SELECT {$this->field} FROM category";
 		$result = $this->connection->query($this->query) ;
-		return $result;
+		$data = array ();
+			while ($row = $result->fetch(PDO::FETCH_ASSOC) ) {
+				$data[] = $row;
+			}
+		$res = '';
+		foreach ($data as $value){
+			foreach($value as $key => $value) {
+				$res .= $key . ' ' . $value . ' ' . '<br/>';
+			}
+		} 
+		return $res;
     }
 
     public function deleteData($key)
